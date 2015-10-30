@@ -5,19 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Blog Laravel - @yield('title')</title>
+	<title>Framgia E-Learning System - @yield('title')</title>
 	<link rel="shortcut icon" href="{{ asset('favicon(copy).png') }}"/>    
-	<!-- <link href="{{ asset('/css/app.css') }}" rel="stylesheet"> -->
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<script src="{{ asset('js/jquery-1.11.3.js') }}"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('js/jquery-validation/jquery.validate.min.js') }}"></script>
-	<script src="{{ asset('js/jquery-validation/additional-methods.min.js') }}"></script>
-	<!-- Fonts -->
-	<!-- <script src="//cdn.ckeditor.com/4.5.4/full/ckeditor.js"></script> -->
+
 	<script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
