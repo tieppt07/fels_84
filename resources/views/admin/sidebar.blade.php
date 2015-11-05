@@ -20,8 +20,8 @@
         <i class="icon-chevron-up"></i>
     </a>
     <ul id="category-menu" class="nav nav-list collapse in">
-        <li><a href="">Create new Category</a></li>
-        <li><a href="">List of Categories</a></li>
+        <li><a href="{{ url('admin/categories/create') }}">Create new Category</a></li>
+        <li><a href="{{ url('admin/categories') }}">List of Categories</a></li>
     </ul>
 
     <a href="#word-menu" class="nav-header" data-toggle="collapse">

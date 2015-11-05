@@ -38,13 +38,15 @@ Route::group(['namespace' => 'Auth'], function() {
     Route::post('password/reset', 'PasswordController@postReset');
 });
 
-Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function() {
+Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() {
     Route::get('dashboard', function() {
         return view('dashboard');
     });
 
     // Manage Users
     Route::resource('users', 'UsersController', ['except' => ['show', 'edit', 'update']]);
+    // Manage Categories
+    Route::resource('categories', 'CategoriesController');
 });
 
 

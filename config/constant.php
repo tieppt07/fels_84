@@ -9,5 +9,8 @@ return [
         'users' => 10,
         'categories' => 10,
     ],
+    'is_admin' => [
+    	'admin' => 1,
+    ]
 ];
 
