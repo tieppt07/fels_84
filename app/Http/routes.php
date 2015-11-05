@@ -15,21 +15,36 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::group(['namespace' => 'Auth'], function() {
+    Route::group(['prefix' => 'auth'], function() {
+        Route::get('login', 'AuthController@getLogin');
+        Route::post('login', 'AuthController@postLogin');
+        Route::get('logout', 'AuthController@getLogout');
 
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
-Route::get('emails/password', function(){
-	return view('emails/password');
+        // Registration routes...
+        Route::get('register', 'AuthController@getRegister');
+        Route::post('register', 'AuthController@postRegister');
+    });
+    
+    Route::get('emails/password', function() {
+        return view('emails/password');
+    });
+    // Password reset link request routes...
+    Route::get('password/email', 'PasswordController@getEmail');
+    Route::post('password/email', 'PasswordController@postEmail');
+
+    // Password reset routes...
+    Route::get('password/reset/{token}', 'PasswordController@getReset');
+    Route::post('password/reset', 'PasswordController@postReset');
 });
 
-// Password reset link request routes...
-Route::get('password/email', 'Auth\PasswordController@getEmail');
-Route::post('password/email', 'Auth\PasswordController@postEmail');
+Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function() {
+    Route::get('dashboard', function() {
+        return view('dashboard');
+    });
 
-// Password reset routes...
-Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-Route::post('password/reset', 'Auth\PasswordController@postReset');
+    // Manage Users
+    Route::resource('users', 'UsersController', ['except' => ['show', 'edit', 'update']]);
+});
+
+
