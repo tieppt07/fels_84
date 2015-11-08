@@ -11,6 +11,9 @@ return [
     ],
     'is_admin' => [
     	'admin' => 1,
-    ]
+    ],
+    'answer' => [
+        'right' => 1,
+    ],
 ];
 
