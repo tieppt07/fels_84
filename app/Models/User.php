@@ -37,23 +37,33 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    public function isAdmin() 
+    {
+        return $this->is_admin == config('constant.is_admin.admin');
+    }
+
     public function setPasswordAttribute($value)
     {
         return $this->attributes['password'] = bcrypt($value);
     }
+    
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'user_id', 'id');
+    }
 
     public function followers() 
     {
-        return $this->hasMany(Actitity::class, 'follower_id');
+        return $this->belongsToMany(User::class, 'activities', 'followee_id', 'follower_id')->withTimestamps();
     }
 
-    public function followeds() 
+    public function followees() 
     {
-        return $this->hasMany(Actitity::class, 'followed_id');
+        return $this->belongsToMany(User::class, 'activities', 'follower_id', 'followee_id')->withTimestamps();
     }
 
-    public function lessons()
+    public function activities()
     {
-        return $this->hasMany(Lesson::class);
+        return $this->hasMany(Activity::class, 'follower_id');
     }
 }

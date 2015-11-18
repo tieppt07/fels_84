@@ -8,6 +8,7 @@ return [
     'records_per_page' => [
         'users' => 10,
         'categories' => 10,
+        'activities' => 10,
     ],
     'is_admin' => [
     	'admin' => 1,
