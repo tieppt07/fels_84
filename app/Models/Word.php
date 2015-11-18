@@ -20,6 +20,10 @@ class Word extends Model
      */
     protected $fillable = ['name', 'category_id', 'description'];
 
+    public static $rules = [
+        'name' => 'required|unique:words',
+    ];
+
     public function category() 
     {
     	return $this->belongsTo(Category::class);

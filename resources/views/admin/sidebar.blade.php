@@ -29,7 +29,7 @@
         <i class="icon-chevron-up"></i>
     </a>
     <ul id="word-menu" class="nav nav-list collapse in">
-        <li><a href="">Create new Word</a></li>
-        <li><a href="">List of Words</a></li>
+        <li><a href="{{ url('admin/words/create') }}">Create new Word</a></li>
+        <li><a href="{{ url('admin/words') }}">List of Words</a></li>
     </ul>
 </div> <!-- /end-sidebar -->

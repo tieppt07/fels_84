@@ -47,6 +47,12 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() 
     Route::resource('users', 'UsersController', ['except' => ['show', 'edit', 'update']]);
     // Manage Categories
     Route::resource('categories', 'CategoriesController');
+
+    // Manage Words
+    Route::resource('words', 'WordsController');
+
+    //Manage Answers
+    Route::resource('answers', 'AnswersController', ['except' => ['show', 'index']]);
 });
 
 
