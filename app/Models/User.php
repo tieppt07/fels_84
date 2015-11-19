@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Auth;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -37,9 +38,23 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    public function is($id) 
+    {
+        return $this->id == $id;
+    }
+
     public function isAdmin() 
     {
         return $this->is_admin == config('constant.is_admin.admin');
+    }
+
+    public function getRoleName()
+    {
+        if ($this->is_admin == config('constant.is_admin.admin')) {
+            return 'ADMIN';
+        } else {
+            return 'USER';
+        }
     }
 
     public function setPasswordAttribute($value)
