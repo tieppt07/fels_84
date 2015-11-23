@@ -15,6 +15,10 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::group(['namespace' => 'Pages'], function() {
+    Route::resource('categories', 'CategoriesController', ['only' => 'index']);
+});
+
 Route::group(['namespace' => 'Auth'], function() {
     Route::group(['prefix' => 'auth'], function() {
         Route::get('login', 'AuthController@getLogin');
