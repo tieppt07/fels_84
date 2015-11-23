@@ -12,6 +12,14 @@
                             <div class="text-center">
                                 <div class="profile">
                                     <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="img-thumbnail">
+                                    @if ($currentUser->is($user->id))    
+                                        @can('update-avatar', $user))                  
+                                            {!! Form::open(['method' => 'PATCH', 'url' => 'avatars/' . $user->id, 'files' => true]) !!}
+                                                {!! Form::file('avatar', ['required' => 'required']) !!}
+                                                {!! Form::submit('Save', ['class' => 'btn btn-primary'] ) !!}
+                                            {!! Form::close() !!}
+                                        @endcan
+                                    @endif
                                 </div>
                             </div>
                         </div>

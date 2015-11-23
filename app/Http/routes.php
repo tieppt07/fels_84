@@ -15,6 +15,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 Route::resource('users', 'ProfileController', ['only' => ['show', 'update']]);
+Route::resource('avatars', 'AvatarsController', ['only' => 'update']);
 
 Route::group(['namespace' => 'Pages'], function() {
     Route::resource('categories', 'CategoriesController', ['only' => 'index']);
