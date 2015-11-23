@@ -28,7 +28,7 @@
                 @if ($currentUser)
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url('words') }}">Word List</a></li>
-                        <li><a href="#">Category</a></li>
+                        <li><a href="{{ url('categories') }}">Category</a></li>
                         <li><a href="#">Lesson</a></li>
                         <li><a href="#">Result</a></li>
                         <li><a href="#">User Show</a></li>
