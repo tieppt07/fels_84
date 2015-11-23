@@ -14,6 +14,7 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+Route::resource('users', 'ProfileController', ['only' => ['show', 'update']]);
 
 Route::group(['namespace' => 'Auth'], function() {
     Route::group(['prefix' => 'auth'], function() {
