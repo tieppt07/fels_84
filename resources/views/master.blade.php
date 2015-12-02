@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="{{ asset('favicon(copy).png') }}"/>    
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery-1.11.3.js') }}"></script>
+    <script src="{{ asset('js/follow.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </head>
 <body>

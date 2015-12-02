@@ -7,26 +7,38 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Profile</div>
                 <div class="panel-body">
-                    <div class="row">
+                    <div class="row" id="profile">
                         <div class="col-md-3">
                             <div class="text-center">
-                                <div class="profile">
-                                    <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="img-thumbnail">
-                                    @if ($currentUser->is($user->id))    
-                                        @can('update-avatar', $user))                  
-                                            {!! Form::open(['method' => 'PATCH', 'url' => 'avatars/' . $user->id, 'files' => true]) !!}
-                                                {!! Form::file('avatar', ['required' => 'required']) !!}
-                                                {!! Form::submit('Save', ['class' => 'btn btn-primary'] ) !!}
-                                            {!! Form::close() !!}
-                                        @endcan
+                                <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="img-thumbnail">
+                                @if ($currentUser->is($user->id))    
+                                    @can('update-avatar', $user)                 
+                                        {!! Form::open(['method' => 'PATCH', 'url' => 'avatars/' . $user->id, 'files' => true]) !!}
+                                            {!! Form::file('avatar', ['required' => 'required']) !!}
+                                            {!! Form::submit('Save', ['class' => 'btn btn-primary'] ) !!}
+                                        {!! Form::close() !!}
+                                    @endcan
+                                @endif
+                                @if (!$currentUser->is($user->id))
+                                    @if ($checkFollow)
+                                        {!! Form::open(['id' => 'form', 'class' => 'unfollow_form']) !!}
+                                            {!! Form::hidden('followeeId', $user->id, ['id' => 'followeeId']) !!}
+                                            <button type="submit" class="button followButton following">Following</button>
+                                        {!! Form::close() !!}
+                                    @else
+                                        {!! Form::open(['id' => 'form', 'class' => 'follow_form']) !!}
+                                            {!! Form::hidden('followeeId', $user->id, ['id' => 'followeeId']) !!}
+                                            <button type="submit" class="button followButton">Follow</button>
+                                        {!! Form::close() !!}
                                     @endif
-                                </div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-9">
                             <p>Name: {{ $user->name }}</p>
                             <p>Email: {{ $user->email }}</p>
                             <p>Role: {{ $user->getRoleName() }}</p>
+                            <p><span id="returnData">{{ $user->followers()->count() }}</span> followers | {{ $user->followees()->count() }} follows</p>
                             @if ($currentUser->is($user->id))
                                 @include('front.partial.showing_error')
                                 @can('update-name', $user)
