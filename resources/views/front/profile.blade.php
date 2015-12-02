@@ -29,8 +29,14 @@
                             <p>Role: {{ $user->getRoleName() }}</p>
                             @if ($currentUser->is($user->id))
                                 @include('front.partial.showing_error')
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createModal">Edit</button>
-                                @include('front.partial.edit_user')
+                                @can('update-name', $user)
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createModal">Edit name</button>
+                                    @include('front.partial.edit_user')
+                                @endcan
+                                @can('update-password', $user)
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
+                                    @include('front.partial.change_password')
+                                @endcan
                             @endif
                             <hr>
                             <div class="row">
