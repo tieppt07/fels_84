@@ -24,7 +24,12 @@
                                             <td>{{ $category->id }}</td>
                                             <td>{{ $category->name }}</td>
                                             <td>{{ $category->words->count() }}</td>
-                                            <td><a href="" ><span class="glyphicon glyphicon-play"></span> Start lesson</a></td>
+                                            <td>
+                                                {!! Form::open(['method' => 'POST', 'url' => 'lessons']) !!}
+                                                    {!! Form::hidden('category_id', $category->id) !!}
+                                                    {!! Form::submit('Start Lesson', ['class' => 'btn btn-danger']) !!}
+                                                {!! Form::close() !!}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
