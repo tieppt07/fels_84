@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('faq', 'WelcomeController@faq');
+Route::get('about', 'WelcomeController@about');
 
 Route::get('home', 'HomeController@index');
 Route::resource('users', 'ProfileController', ['only' => ['show', 'update']]);
