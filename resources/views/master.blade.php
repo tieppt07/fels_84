@@ -39,6 +39,15 @@
                         <li><a href="{{ url('/auth/login') }}">Login</a></li>
                         <li><a href="{{ url('/auth/register') }}">Register</a></li>
                     @else
+                        <li>
+                            {!! Form::open(['method' => 'GET', 'action' => 'SearchController@user', 'class' => 'navbar-form navbar-left']) !!}
+                                <div class="form-group">
+                                    {!! Form::text('key', null, ['class' => 'form-control', 'placeholder' => 'Enter name or email']) !!}
+                                    <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                                </div>
+
+                            {!! Form::close() !!}
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ $currentUser->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">

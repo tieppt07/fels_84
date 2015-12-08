@@ -18,7 +18,7 @@ Route::resource('users', 'ProfileController', ['only' => ['show', 'update']]);
 
 Route::resource('avatars', 'AvatarsController', ['only' => 'update']);
 Route::resource('password', 'PasswordController', ['only' => 'update']);
-
+Route::get('search', 'SearchController@user');
 
 Route::group(['namespace' => 'Pages'], function() {
     Route::resource('categories', 'CategoriesController', ['only' => 'index']);
