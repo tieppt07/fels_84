@@ -36,7 +36,8 @@ class ProfileController extends Controller
         $user = User::findOrFail($id);
         $activities = $user->lessons()->paginate(config('constant.records_per_page.activities'));
         $activities->load(['category']);
-        return view('front.profile', ['activities' => $activities, 'user' => $user]);
+        $checkFollow = Activity::where('followee_id', $id)->where('follower_id', Auth::user()->id)->exists();
+        return view('front.profile', ['activities' => $activities, 'user' => $user, 'checkFollow' => $checkFollow]);
     }
 
     /**
