@@ -23,9 +23,10 @@ Route::resource('lessons', 'LessonsController');
 Route::get('search', 'SearchController@user');
 Route::resource('activities', 'ActivitiesController', ['only' => ['store', 'destroy']]);
 
-
 Route::group(['namespace' => 'Pages'], function() {
     Route::resource('categories', 'CategoriesController', ['only' => 'index']);
+    Route::resource('words', 'WordsController', ['only' => 'index']);
+    Route::post('words', 'WordsController@filter');
 });
 
 Route::group(['namespace' => 'Auth'], function() {

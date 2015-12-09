@@ -10,6 +10,7 @@
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery-1.11.3.js') }}"></script>
     <script src="{{ asset('js/follow.js') }}"></script>
+    <script src="{{ asset('js/form-filter.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </head>
 <body>
@@ -30,7 +31,7 @@
                     @if ($currentUser)
                         <li><a href="{{ url('words') }}">Word List</a></li>
                         <li><a href="{{ url('categories') }}">Category</a></li>
-                        <li><a href="#">Lesson</a></li>
+                        <li><a href="{{ url('lessons') }}">Lesson</a></li>
                     @endif
                         <li><a href="{{ url('faq') }}">FAQ</a></li>
                         <li><a href="{{ url('about') }}">About</a></li>
