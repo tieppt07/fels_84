@@ -25,15 +25,15 @@
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                @if ($currentUser)
-                    <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">
+                    @if ($currentUser)
                         <li><a href="{{ url('words') }}">Word List</a></li>
                         <li><a href="{{ url('categories') }}">Category</a></li>
                         <li><a href="#">Lesson</a></li>
-                        <li><a href="#">Result</a></li>
-                        <li><a href="#">User Show</a></li>
-                    </ul>
-                @endif
+                    @endif
+                        <li><a href="{{ url('faq') }}">FAQ</a></li>
+                        <li><a href="{{ url('about') }}">About</a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (!$currentUser)
                         <li><a href="{{ url('/auth/login') }}">Login</a></li>
@@ -43,7 +43,6 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ $currentUser->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('users/'.$currentUser->id) }}">Profile</a></li>
-                                <li><a href="#">Change password</a></li>
                                 @if ($currentUser->isAdmin())
                                     <li role="separator" class="divider"></li>
                                     <li><a href="{{ url('admin') }}">Admin Panel</a></li>

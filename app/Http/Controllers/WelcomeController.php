@@ -33,4 +33,14 @@ class WelcomeController extends Controller {
 		return view('welcome');
 	}
 
+	public function faq()
+	{
+		return view('front.staticpage.faq');
+	}
+
+	public function about()
+	{
+		return view('front.staticpage.about');
+	}
+
 }
