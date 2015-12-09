@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style-cos.css') }}">
     <script src="{{ asset('js/jquery-1.11.3.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
 </head>
 <body>
     <div class="navbar">
@@ -20,17 +19,15 @@
                 <li id="fat-menu" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="icon-user"></i> 
+                        {{ Auth::user()->name }}
                         <i class="icon-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Change password</a></li>
-                        <li role="separator" class="divider"></li>
                         <li><a href="{{ url('/auth/logout') }}">Log out</a></li>
                     </ul>
                 </li>
             </ul>
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="{{ url('home') }}">
                 <span class="first">Framgia </span>
                 <span class="second">E-learning</span>
             </a>
