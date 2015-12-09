@@ -24,7 +24,7 @@
                             </div>
                             <div class="form-group col-xs-12 col-sm-12">
                                 {!! Form::label('category', 'Category:', ['class' => 'control-label']) !!}
-                                {!! Form::select('category', $categories, ['class' => 'form-control']) !!}
+                                {!! Form::select('category', $categories, null, ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group col-xs-12 col-sm-12">
                                 {!! Form::label('description', 'Word Description:', ['class' => 'control-label']) !!}

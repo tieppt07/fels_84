@@ -18,7 +18,7 @@
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <label>Category</label>
+                                            <label>Category</label><br>
                                             <div class="radio-inline">
                                                 <label>
                                                     {!! Form::radio('filter', 'all', true) !!}All words

@@ -10,10 +10,15 @@
                         <div class="col-md-3">
                             <div class="text-center">
                                 <div class="profile">
-                                    <img src="{{ $currentUser->avatar }}" alt="" width="100px" height="100px"><br><br>
-                                    <p>{{ $currentUser->followers()->count() }} followers | {{ $currentUser->followees()->count() }} follows</p>
+                                    <img src="{{ $currentUser->avatar }}" alt="{{ $currentUser->name }}" class="img-thumbnail"><br><br>
+                                    <p>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#followersModal">{{ $currentUser->followers()->count() }} followers</button>
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#followeesModal">{{ $currentUser->followees()->count() }} follows </button>
+                                        @include('front.partial.followers')
+                                        @include('front.partial.followees')
+                                    </p>
                                     <p><a href="{{ url('users/'.$currentUser->id) }}">{{ $currentUser->name }}</a></p>
-                                    <p>learned 120 words</p>
+                                    <p>learned {{ $validResultsCount }} words</p>
                                 </div>
                             </div>
                         </div>
@@ -25,18 +30,22 @@
                             <div class="well">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        @foreach ($activities as $activity)
-                                            <div class="row">
-                                                <div class="col-sm-12 col-xs-12">
-                                                    <p>
-                                                        <a href="{{ url('users/'.$activity->user->id) }}">{{ $activity->user->name }}</a>
-                                                        starts Lesson <strong>#{{ $activity->id }}</strong>
-                                                        in Category <a href="{{ url('categories/'.$activity->category->id) }}">{{ $activity->category->name }}</a>
-                                                        at <u>{{ $activity->created_at }}</u>
-                                                    </p>  
+                                        @if ($activities->count() > 0)
+                                            @foreach ($activities as $activity)
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xs-12">
+                                                        <p>
+                                                            <a href="{{ url('users/'.$activity->user->id) }}">{{ $activity->user->name }}</a>
+                                                            starts Lesson <strong>#{{ $activity->id }}</strong>
+                                                            in Category <a href="{{ url('categories/'.$activity->category->id) }}">{{ $activity->category->name }}</a>
+                                                            at <u>{{ $activity->created_at }}</u>
+                                                        </p>  
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        @else
+                                            No results!
+                                        @endif
                                     </div>
                                     <div class="text-center">
                                         {!! $activities->render() !!}
