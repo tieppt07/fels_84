@@ -17,9 +17,9 @@ Route::get('about', 'WelcomeController@about');
 
 Route::get('home', 'HomeController@index');
 Route::resource('users', 'ProfileController', ['only' => ['show', 'update']]);
-
 Route::resource('avatars', 'AvatarsController', ['only' => 'update']);
 Route::resource('password', 'PasswordController', ['only' => 'update']);
+Route::resource('lessons', 'LessonsController');
 Route::get('search', 'SearchController@user');
 Route::resource('activities', 'ActivitiesController', ['only' => ['store', 'destroy']]);
 

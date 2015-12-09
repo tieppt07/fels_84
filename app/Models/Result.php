@@ -18,7 +18,26 @@ class Result extends Model
      *
      * @var array
      */
-    protected $fillable = ['lesson_id', 'word_id', 'answer_id'];
+    protected $fillable = ['lesson_id', 'word_id', 'answer_id', 'valid'];
+    
+    public $timestamps = false;
+
+    const IS_VALID = 1;
+    const IS_INVALID = 0;
+
+    public function scopeValid($query) 
+    {
+        return $query->where('valid', '=', self::IS_VALID);
+    }
+
+    public function isCorrect() 
+    {
+        if ($this->valid == 1) {
+            echo '<p class="list-group-item list-group-item-success">Right</p>';
+        } else {
+            echo '<p class="list-group-item list-group-item-danger">Wrong</p>';
+        }
+    }
 
     public function lesson() 
     {
