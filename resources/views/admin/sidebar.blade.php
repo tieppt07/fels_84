@@ -3,7 +3,7 @@
         <i class="icon-dashboard"></i>Dash Board
     </a>
     <ul id="dashboard-menu" class="nav nav-list collapse in">
-        <li><a href="">Home Page</a></li>
+        <li><a href="{{ url('admin/dashboard') }}">Home Page</a></li>
     </ul>
 
     <a href="#user-menu" class="nav-header" data-toggle="collapse">

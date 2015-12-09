@@ -23,7 +23,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}">E-learning</a>
+                <a class="navbar-brand" href="{{ url('home') }}">E-learning</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -56,7 +56,7 @@
                                 <li><a href="{{ url('users/'.$currentUser->id) }}">Profile</a></li>
                                 @if ($currentUser->isAdmin())
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="{{ url('admin') }}">Admin Panel</a></li>
+                                    <li><a href="{{ url('admin/dashboard') }}">Admin Panel</a></li>
                                 @endif
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/auth/logout') }}">Logout</a></li>

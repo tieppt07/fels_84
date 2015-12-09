@@ -54,7 +54,7 @@ Route::group(['namespace' => 'Auth'], function() {
 
 Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() {
     Route::get('dashboard', function() {
-        return view('dashboard');
+        return view('admin.dashboard');
     });
 
     // Manage Users

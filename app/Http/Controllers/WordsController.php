@@ -23,6 +23,7 @@ class WordsController extends Controller
     public function index()
     {
         $words = Word::paginate(config('constant.records_per_page.words'));
+        $words->load(['category']);
         return view('admin.word.index', ['words' => $words]);
     }
 
@@ -67,8 +68,8 @@ class WordsController extends Controller
     public function show($id)
     {
         $word = Word::findorFail($id);
-        $answers = $word->answers();
-        return view('admin.word.word', ['word' => $word, 'answers' => $answers]);
+        $word->load(['answers']);
+        return view('admin.word.word', ['word' => $word]);
     }
 
     /**

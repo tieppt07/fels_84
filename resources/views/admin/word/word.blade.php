@@ -5,7 +5,9 @@
 @section('content')
     <div class="row-fluid">
         <div class="btn-toolbar">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">More answer</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+                <i class="icon-plus"></i>More answer
+            </button>
             @include('admin.partial.showing_error')
             @include('admin.word.partial.create_answer')
             <div class="btn-group"></div>
@@ -20,7 +22,7 @@
                     <th>Delete</th>
                 </thead>
                 <tbody>
-                    @foreach ($answers as $answer)
+                    @foreach ($word->answers as $answer)
                         <tr>
                             <td>{{ $answer->answer }}</td>
                             <td>

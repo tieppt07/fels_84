@@ -19,7 +19,8 @@
                         <th>Words Count</th>
                         <th>Created at</th>
                         <th>Updated at</th>
-                        <th>Action</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,8 @@
                             <td>{{ $category->updated_at }}</td>
                             <td>
                                 <a href="{{ url('admin/categories/'.$category->id.'/edit') }}" class="btn btn-warning">Edit</a>
+                            </td>
+                            <td>
                                 {!! Form::open(['route' => ['admin.categories.destroy', $category->id], 'method' => 'delete']) !!}
                                     {!! Form::submit('Delete', ['onclick' => 'return confirm("Are you sure to delete?")', 'class' => 'btn btn-danger']) !!}
                                 {!! Form::close() !!}
