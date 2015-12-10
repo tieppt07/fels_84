@@ -23,7 +23,7 @@
                                         @foreach ($categories as $category)
                                             <tr>
                                                 <td>{{ $category->id }}</td>
-                                                <td>{{ $category->name }}</td>
+                                                <td><a href="{{ url('categories/' . $category->id) }}">{{ $category->name }}</a></td>
                                                 <td>{{ $category->words->count() }}</td>
                                                 <td>
                                                     {!! Form::open(['method' => 'POST', 'url' => 'lessons']) !!}

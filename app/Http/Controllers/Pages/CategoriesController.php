@@ -26,4 +26,17 @@ class CategoriesController extends Controller
         $categories->load(['words']);
         return view('front.categories', ['categories' => $categories]);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->load(['words']);
+        return view('front.category', ['category' => $category]);
+    }
 }
