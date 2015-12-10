@@ -17,12 +17,16 @@ $("document").ready(function ()
             data : form_data,
             success: function(response) {
                 var words = response.words; 
-                displayWords = '';
-                $.each(words , function(key, value) {
-                    displayWords += '<label class="label label-lg label-primary">' + value.name + '</label>';
-                    displayWords += ' ' ;
-                });
-                $('#returnData').html(displayWords); 
+                if (words.length > 0) {
+                    displayWords = '';
+                    $.each(words , function(key, value) {
+                        displayWords += '<label class="label label-lg label-primary">' + value.name + '</label>';
+                        displayWords += ' ' ;
+                    });
+                    $('#returnData').html(displayWords);
+                } else {
+                    $('#returnData').html('No results!');
+                } 
             }
         });
     });

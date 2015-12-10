@@ -53,17 +53,21 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    @foreach ($activities as $activity)
-                                        <div class="row">
-                                            <div class="col-sm-12 col-xs-12">
-                                                <p>
-                                                    Started Lesson <strong>#{{ $activity->id }}</strong>
-                                                    in Category <a href="{{ url('categories/'.$activity->category->id) }}">{{ $activity->category->name }}</a>
-                                                    at <u>{{ $activity->created_at }}</u>
-                                                </p>  
+                                    @if ($activities->count() > 0)
+                                        @foreach ($activities as $activity)
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <p>
+                                                        Started Lesson <strong>#{{ $activity->id }}</strong>
+                                                        in Category <a href="{{ url('categories/'.$activity->category->id) }}">{{ $activity->category->name }}</a>
+                                                        at <u>{{ $activity->created_at }}</u>
+                                                    </p>  
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    @else
+                                        No results!
+                                    @endif
                                 </div>
                                 <div class="text-center">
                                     {!! $activities->render() !!}

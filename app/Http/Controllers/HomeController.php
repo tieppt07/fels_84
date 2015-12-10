@@ -10,6 +10,7 @@ use DB;
 use App\User;
 use App\Activity;
 use App\Lesson;
+use App\Result;
 use Config;
 
 class HomeController extends Controller 
@@ -36,6 +37,8 @@ class HomeController extends Controller
                             ->orderBy('created_at', 'DESC')
                             ->paginate(config('constant.records_per_page.activities'));
         $activities->load(['category', 'user']);
-        return view('home', ['activities' => $activities]);
+        $lessonsId = Auth::user()->lessons()->lists('lessons.id');
+        $validResultsCount = Result::whereIn('lesson_id', $lessonsId)->where('valid', Result::IS_VALID)->count();  
+        return view('home', ['activities' => $activities, 'validResultsCount' => $validResultsCount]);
     }
 }
